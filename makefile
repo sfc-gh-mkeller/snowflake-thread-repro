@@ -1,7 +1,7 @@
 image:=break-snowflake
 
 build:
-	docker build . -t $(image)
+	docker build . --no-cache -t $(image)
 
 test:
 	docker run \
