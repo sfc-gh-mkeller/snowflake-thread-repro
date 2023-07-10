@@ -28,10 +28,14 @@ def main():
         logger.addHandler(ch)
 
     # spins up 30 threads, results in error ~20% of the time
+    threads = list()
     for i in range(31):
         print(f"Starting thread {i}")
         thread = threading.Thread(target=connect_to_snowflake)
+        threads.append(thread)
         thread.start()
+    for t in threads:
+        t.join()
 
 
 if __name__ == "__main__":
